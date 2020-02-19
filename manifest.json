@@ -1,0 +1,20 @@
+{
+  
+  "manifest_version": 2,
+
+  "name": "TimeSaver'",
+  "description": "Simplest website blocker",
+  "version": "1.0",
+
+  "browser_action": {
+    // "default_icon": "icon.jpg",
+    "default_popup": "settings.html"
+  },
+
+  "background": { "scripts": ["blocker.js"] },
+  "permissions": [
+    "storage",
+    "webRequest", "webRequestBlocking",
+    "http://*/*", "https://*/*"
+  ]
+}
