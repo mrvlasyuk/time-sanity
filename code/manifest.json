@@ -1,20 +1,19 @@
 {
-  
   "manifest_version": 2,
 
-  "name": "TimeSaver'",
-  "description": "Simplest website blocker",
+  "name": "Time-Sanity'",
+  "description": "Redirects sites you procrastinate to arxiv-sanity.com",
   "version": "1.0",
 
   "browser_action": {
-    // "default_icon": "icon.jpg",
+    "default_icon": "icon.png",
     "default_popup": "settings.html"
   },
 
   "background": { "scripts": ["blocker.js"] },
   "permissions": [
     "storage",
-    "webRequest", "webRequestBlocking",
+    "tabs",
     "http://*/*", "https://*/*"
   ]
 }

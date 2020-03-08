@@ -1,4 +1,6 @@
-var blacklist = [];
+var REDIRECT_URL = "https://www.arxiv-sanity.com/";
+
+var blacklist = ["youtube.com"];
 var is_on = true;
 
 chrome.storage.sync.get(['config'], function(result) {
@@ -8,7 +10,6 @@ chrome.storage.sync.get(['config'], function(result) {
 	}
 });
 
-
 chrome.storage.onChanged.addListener(function(changes, namespace) {
     if ("config" in changes){
     	let config = changes["config"].newValue;
@@ -17,17 +18,17 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     }
 });
 
-
-chrome.webRequest.onBeforeRequest.addListener(
-	function(info) {
-		for (var elem in blacklist) {
-			if (info.url.includes(blacklist[elem])) {
-				console.log('Blocking ' + info.url);
-				return {cancel: true};
-			}
-		}	
-		return;
-	},
-	{urls: ["http://*/*", "https://*/*"]},
-	["blocking"]
-);
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+    if (!changeInfo.url || !is_on){
+    	return;
+    }
+    for (const badurl of blacklist){
+    	if (badurl.length <= 3){
+    		continue;
+    	}
+    	if (changeInfo.url.includes(badurl)){
+    		console.log("Blocking " + changeInfo.url);
+    		chrome.tabs.update(tabId, {url: REDIRECT_URL});
+    	}
+	}
+ });

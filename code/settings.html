@@ -3,11 +3,36 @@
 	<title>Blocker options</title>
 	<script src="settings.js"></script>
 </head>
+<style>
+	.button {
+	  background-color: #008CBA;
+	  border: none;
+	  border-radius: 8px;
+	  color: white;
+	  padding: 7px 15px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	}
+	.text {
+ 	  font-size: 13px;
+ 	  line-height:20px;
+	}
+</style>
+
 <body>
 	<h1>Blacklist:</h1>
-	<textarea id="blacklist" rows=10 cols=60></textarea>
-	<br/>
-	Enabled: <input id="enabled" type="checkbox"/>
-	<button id="btn">Save</button>
+	<textarea id="blacklist" class="text" rows=10 cols=30 placeholder="URLs to block..." ></textarea>
+	<br>
+	<br>
+	<div align="center">
+	  <div style="font-size:15px">
+	  	Enabled: <input id="enabled" type="checkbox"/>
+	  </div><br>
+	  <div>
+	  	<button class="button" id="btn">Save</button>
+	  </div>
+	</div>
 </body>
 </html>
