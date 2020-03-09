@@ -9,4 +9,4 @@ You can install Chrome Extension: [Time-Sanity](https://chrome.google.com/websto
 
 ## Acknowledgments
 
-* (Andrej Karpathy)[https://github.com/karpathy] for creating [arxiv-sanity.com](https://www.arxiv-sanity.com/).
+* [Andrej Karpathy](https://github.com/karpathy) for creating [arxiv-sanity.com](https://www.arxiv-sanity.com/).
