@@ -1,6 +1,7 @@
 ## What is it?
 
-Simplest extension which redirects sites you procrastinate to [arxiv-sanity.com](https://www.arxiv-sanity.com/).
+Time-Sanity is the simplest Chrome Extension which redirects you to [arxiv-sanity.com](https://www.arxiv-sanity.com/) every time you procrastinate and visit distracting sites like Youtube, Instagram, etc.
+
 Watch less youtube, read more interesting articles and useful ideas.
 
 ## How to use

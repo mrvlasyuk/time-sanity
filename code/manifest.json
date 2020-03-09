@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Time-Sanity",
-  "description": "Redirects sites you procrastinate to arxiv-sanity.com",
+  "description": "Keep the blacklist of websites with Time-Sanity and get redirected to arxiv-sanity.com every time you procrastinate!",
   "version": "1.0",
 
   "browser_action": {
@@ -10,7 +10,7 @@
     "default_popup": "settings.html"
   },
 
-  "background": { "scripts": ["blocker.js"] },
+  "background": {"scripts": ["blocker.js"]},
   "permissions": [
     "storage",
     "tabs",
