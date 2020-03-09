@@ -1,7 +1,9 @@
+var DEFAULT_BLACKLIST = ["youtube.com"]; 
+
 chrome.storage.sync.get(['config'], function(result) {
 	if (!result || !result.config){
 		console.log("Setting empty settings");
-		config = {blacklist: [], is_on: true};
+		config = {blacklist: DEFAULT_BLACKLIST, is_on: true};
 		chrome.storage.sync.set({config: config});
 	}
 });
@@ -15,7 +17,6 @@ document.addEventListener('DOMContentLoaded',
 			  blacklist = result.config.blacklist;
 			  is_on = result.config.is_on;
 			  console.log("Loaded", blacklist, is_on);
-
 			  document.getElementById('enabled').checked = (is_on !== false);
 			  document.getElementById('blacklist').value = blacklist.join("\n");
 			}

@@ -1,6 +1,6 @@
 var REDIRECT_URL = "https://www.arxiv-sanity.com/";
 
-var blacklist = ["youtube.com"];
+var blacklist = [];
 var is_on = true;
 
 chrome.storage.sync.get(['config'], function(result) {
@@ -17,6 +17,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
     	is_on = config.is_on;
     }
 });
+
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     if (!changeInfo.url || !is_on){
