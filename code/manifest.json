@@ -2,8 +2,8 @@
   "manifest_version": 2,
 
   "name": "Time-Sanity",
-  "description": "Keep the blacklist of websites with Time-Sanity and get redirected to arxiv-sanity.com every time you procrastinate!",
-  "version": "1.0",
+  "description": "Keep the stoplist of websites with Time-Sanity and get redirected to arxiv-sanity.com every time you procrastinate!",
+  "version": "1.1",
 
   "browser_action": {
     "default_icon": "icon.png",
