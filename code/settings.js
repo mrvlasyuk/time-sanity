@@ -1,34 +1,45 @@
-var DEFAULT_BLACKLIST = ["youtube.com"]; 
+var DEFAULT_CONFIG = {
+	blacklist: ["youtube.com"],
+	is_on: true,
+	redirect_url: "http://www.arxiv-sanity.com/"
+}
 
 chrome.storage.sync.get(['config'], function(result) {
 	if (!result || !result.config){
 		console.log("Setting empty settings");
-		config = {blacklist: DEFAULT_BLACKLIST, is_on: true};
-		chrome.storage.sync.set({config: config});
+		chrome.storage.sync.set({config: DEFAULT_CONFIG});
 	}
 });
 
+function get_elem(id) {
+	return document.getElementById(id);
+}
+
 document.addEventListener('DOMContentLoaded',
 	function () {
-		var is_on, blacklist;
-
 		chrome.storage.sync.get(['config'], function(result) {
 			if (result && result.config){
-			  blacklist = result.config.blacklist;
-			  is_on = result.config.is_on;
-			  console.log("Loaded", blacklist, is_on);
-			  document.getElementById('enabled').checked = (is_on !== false);
-			  document.getElementById('blacklist').value = blacklist.join("\n");
+				let C = result.config;
+				console.log("Loaded", C.blacklist, C.is_on);
+				get_elem('enabled').checked = (C.is_on !== false);
+				get_elem('blacklist').value = C.blacklist.join("\n");
+				get_elem('redirect_url').value = C.redirect_url;
 			}
 		});
-
-		document.getElementById("btn").addEventListener("click", 
+		var btn = get_elem("btn");
+		btn.addEventListener("click", 
 			function(){
-				is_on = document.getElementById('enabled').checked;
-				blacklist = document.getElementById('blacklist').value.split("\n");
-				config = {blacklist, is_on};
+				let is_on = get_elem('enabled').checked;
+				let blacklist = get_elem('blacklist').value.split("\n");
+				let redirect_url = get_elem('redirect_url').value;
+				config = { blacklist, is_on, redirect_url};
 				chrome.storage.sync.set({config: config});
-				console.log("Saved", blacklist, is_on);
+				console.log("Saved config", config);
+				
+				btn.innerText = "Saved";
+				setTimeout(() => {
+					btn.innerText = "Save";
+				}, 500);
 			}
 		);
 	});

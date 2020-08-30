@@ -1,38 +1,81 @@
 <html>
 <head>
-	<title>Blocker options</title>
-	<script src="settings.js"></script>
+    <title>Blocker options</title>
+    <script src="settings.js"></script>
 </head>
 <style>
-	.button {
-	  background-color: #008CBA;
-	  border: none;
-	  border-radius: 8px;
-	  color: white;
-	  padding: 7px 15px;
-	  text-align: center;
-	  text-decoration: none;
-	  display: inline-block;
-	  font-size: 16px;
-	}
-	.text {
- 	  font-size: 13px;
- 	  line-height:20px;
-	}
+.main {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px 12px;
+
+    border-radius: 24px;
+    outline: none;
+    border: 0;
+
+    background-color: #0967D2;
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+    line-height: 1;
+    color: #FFF;
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.header{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn:hover {
+    background-color: #2186EB;
+    opacity: 1;
+}
+
+.blacklist {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0.5rem;
+}
+
+
+.redirect_url {
+    font-size: 15px;
+    line-height: 20px;
+    padding: 0.5rem;
+}
+
+.body {
+}
+
 </style>
 
-<body>
-	<h1>Blacklist:</h1>
-	<textarea id="blacklist" class="text" rows=10 cols=30 placeholder="URLs to block..." ></textarea>
-	<br>
-	<br>
-	<div align="center">
-	  <div style="font-size:15px">
-	  	Enabled: <input id="enabled" type="checkbox"/>
-	  </div><br>
-	  <div>
-	  	<button class="button" id="btn">Save</button>
-	  </div>
-	</div>
+<body class="body">
+    <div class="main">
+        <h1>Time sanity</h1>
+        <div class="header">Stoplist:</div>
+        <textarea id="blacklist" class="blacklist" rows=10 cols=30 placeholder="URLs to block..." ></textarea>
+
+        <div class="header" >Redirect to:</div>
+        <input class="redirect_url" type="text" id="redirect_url" name="redirect_url">
+
+        <div class="header">
+            Enabled: <input id="enabled" type="checkbox" />
+        </div>
+
+        <button class="btn" id="btn">Save</button>
+    </div>
 </body>
 </html>

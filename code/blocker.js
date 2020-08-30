@@ -1,35 +1,35 @@
-var REDIRECT_URL = "https://www.arxiv-sanity.com/";
+var DEFAULT_CONFIG = {
+	blacklist: ["youtube.com"],
+	is_on: true,
+	redirect_url: "http://www.arxiv-sanity.com/"
+}
 
-var blacklist = [];
-var is_on = true;
+var CONFIG = DEFAULT_CONFIG;
 
 chrome.storage.sync.get(['config'], function(result) {
 	if (result && result.config){
-		blacklist = result.config.blacklist;
-		is_on = result.config.is_on;
+		CONFIG = result.config;
 	}
 });
 
 chrome.storage.onChanged.addListener(function(changes, namespace) {
     if ("config" in changes){
-    	let config = changes["config"].newValue;
-    	blacklist = config.blacklist;
-    	is_on = config.is_on;
+		CONFIG = changes["config"].newValue;
     }
 });
 
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-    if (!changeInfo.url || !is_on){
+	if (!changeInfo.url || !CONFIG.is_on){
     	return;
     }
-    for (const badurl of blacklist){
+	for (const badurl of CONFIG.blacklist){
     	if (badurl.length <= 3){
     		continue;
     	}
     	if (changeInfo.url.includes(badurl)){
     		console.log("Blocking " + changeInfo.url);
-    		chrome.tabs.update(tabId, {url: REDIRECT_URL});
+    		chrome.tabs.update(tabId, {url: CONFIG.redirect_url});
     	}
 	}
  });
